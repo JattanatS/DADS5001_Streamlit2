@@ -7,7 +7,7 @@ import pydeck as pdk
 
 st.write("# Starbucks in THAILAND 😃☕💯")
 df = pd.read_csv("Starbucks.csv")
-st.write(df)
+#st.write(df)
 
     
 thailandProvinces = [
@@ -182,15 +182,8 @@ def thai(df):
     query_thai["City"] = query_thai["Postcode"].map(postal_code_map).fillna(query_thai["City"])
     return query_thai
 query_thai = thai(df)
+st.write(query_thai)
 
-
-
-#def filter(query_thai,thailandProvinces):
-#    filter_input = pd.Series(thailandProvinces)[pd.Series(thailandProvinces).isin(query_thai['City'])]
-#    y = st.sidebar.selectbox("Choose a Provinces", filter_input)
-#    return y
-
-#y = filter(query_thai,thailandProvinces)
 
 @st.cache_data
 def filter_provinces(query_thai):
