@@ -210,7 +210,7 @@ def map3d(query_thai,y):
             layers=[
                 pdk.Layer(
                     "HexagonLayer",
-                    data=query_thai,
+                    data=query_thai.query('City == @y'),
                     get_position="[Longitude, Latitude]",
                     radius=200,
                     elevation_scale=4,
@@ -220,7 +220,7 @@ def map3d(query_thai,y):
                 ),
                 pdk.Layer(
                     "ScatterplotLayer",
-                    data=query_thai,
+                    data=query_thai.query('City == @y'),
                     get_position="[Longitude, Latitude]",
                     get_color="[200, 30, 0, 160]",
                     get_radius=200,
